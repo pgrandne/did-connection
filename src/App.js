@@ -8,7 +8,7 @@ import { EthereumAuthProvider, ThreeIdConnect } from "@3id/connect";
 export default function App() {
   // Create a ThreeIdConnect connect instance as soon as possible in your app to start loading assets
   const threeID = new ThreeIdConnect();
-  const CERAMIC_URL = 'https://localhost:7007';
+  const CERAMIC_URL = 'https://ceramic-clay.3boxlabs.com';
 
   async function authenticateWithEthereum(ethereumProvider) {
     // Request accounts from the Ethereum provider
@@ -25,7 +25,7 @@ export default function App() {
     await threeID.connect(authProvider);
 
 
-    const ceramic = new CeramicClient();
+    const ceramic = new CeramicClient(CERAMIC_URL);
     const did = new DID({
       // Get the DID provider from the 3ID Connect instance
       provider: threeID.getDidProvider(),
